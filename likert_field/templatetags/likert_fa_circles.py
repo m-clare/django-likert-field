@@ -10,39 +10,20 @@ from django.utils.safestring import mark_safe
 register = template.Library()
 
 # Font-awesome circle ver 5
-circle_set_3 = {
+circle_set_6 = {
     'geo': "<i class='fas fa-circle likert-circle'></i>",
-    'unlit': "<i class='icon-star-empty likert-circle'></i>",
+    'unlit': "<i class='fas fa-circle-o likert-circle'></i>",
     'noanswer': "<i class='fa fa-ban likert-circle'></i>"
 }
 
-# Font-awesome stars ver 4
-star_set_4 = {
-    'star': "<i class='fa fa-star likert-star'></i>",
-    'unlit': "<i class='fa fa-star-o likert-star'></i>",
-    'noanswer': "<i class='fa fa-ban likert-star'></i>"
-}
-
-
-def fa_stars3(num, max_stars=5):
+def fa_circles5(num, max_geo=5):
     """
-    Stars for Font Awesome 3
+    Circles for Font Awesome 3
 
-    If num is not None, the returned string will contain num solid stars
-    followed by max_stars - num empty stars
+    If num is not None, the returned string will contain num solid circles
+    followed by max_geo - num empty stars
     """
-    return mark_safe(render_stars(num, max_stars, star_set_3))
+    return mark_safe(render_stars(num, max_geo, circle_set_6))
 
-register.filter('fa_stars3', fa_stars3)
+register.filter('fa_circles5', fa_circles5)
 
-
-def fa_stars4(num, max_stars=5):
-    """
-    Stars for Font Awesome 4
-
-    If num is not None, the returned string will contain num solid stars
-    followed by max_stars - num empty stars
-    """
-    return mark_safe(render_stars(num, max_stars, star_set_4))
-
-register.filter('fa_stars4', fa_stars4)
